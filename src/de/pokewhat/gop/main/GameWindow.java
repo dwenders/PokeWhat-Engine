@@ -10,12 +10,16 @@ public class GameWindow extends JFrame{
 
     boolean fse = false;
     int fsm = 0;
-    GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+    GraphicsDevice device;
 
-    public GameWindow( String title, int width, int height){
+
+    public GameWindow( String title, int width, int height, GraphicsDevice device){
+        super(device.getDefaultConfiguration());
+        this.device = device;
+
         setTitle(title);
         setSize(width, height);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
     }
@@ -23,7 +27,7 @@ public class GameWindow extends JFrame{
     private void setfullscreen(){
         switch(fsm){
             case 1:
-                setUndecorated(false);
+                //setUndecorated(false);
                 System.out.println("No FullScreen");
                 break;
             case 2:
